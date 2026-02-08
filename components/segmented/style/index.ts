@@ -104,7 +104,9 @@ const genSegmentedStyle: GenerateStyle<SegmentedToken> = (token: SegmentedToken)
       borderRadius: token.borderRadius,
       transition: `all ${motionDurationMid}`,
       ...genFocusStyle(token),
-
+      '@media (prefers-reduced-motion: reduce)': {
+        transition: 'none',
+      },
       [`${componentCls}-group`]: {
         position: 'relative',
         display: 'flex',
@@ -151,7 +153,9 @@ const genSegmentedStyle: GenerateStyle<SegmentedToken> = (token: SegmentedToken)
         // Fix Safari render bug
         // https://github.com/ant-design/ant-design/issues/45250
         transform: 'translateZ(0)',
-
+        '@media (prefers-reduced-motion: reduce)': {
+          transition: 'none',
+        },
         '&-selected': {
           ...getItemSelectedStyle(token),
           color: token.itemSelectedColor,
@@ -175,6 +179,9 @@ const genSegmentedStyle: GenerateStyle<SegmentedToken> = (token: SegmentedToken)
           transition: ['opacity', 'background-color']
             .map((prop) => `${prop} ${motionDurationMid}`)
             .join(', '),
+          '@media (prefers-reduced-motion: reduce)': {
+            transition: 'none',
+          },
         },
 
         [`&:not(${componentCls}-item-selected):not(${componentCls}-item-disabled)`]: {
@@ -268,6 +275,9 @@ const genSegmentedStyle: GenerateStyle<SegmentedToken> = (token: SegmentedToken)
         transition: [`transform`, `width`]
           .map((prop) => `${prop} ${motionDurationSlow} ${motionEaseInOut}`)
           .join(', '),
+        '@media (prefers-reduced-motion: reduce)': {
+          transition: 'none',
+        },
       },
 
       [`&${componentCls}-shape-round`]: {

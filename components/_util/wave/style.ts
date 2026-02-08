@@ -32,7 +32,9 @@ const genWaveStyle: GenerateStyle<WaveToken> = (token) => {
         transition: [`box-shadow 0.4s`, `opacity 2s`]
           .map((prop) => `${prop} ${motionEaseOutCirc}`)
           .join(','),
-
+        '@media (prefers-reduced-motion: reduce)': {
+          transition: 'none',
+        },
         '&-active': {
           boxShadow: `0 0 0 6px currentcolor`,
           opacity: 0,
@@ -41,6 +43,9 @@ const genWaveStyle: GenerateStyle<WaveToken> = (token) => {
           transition: [`box-shadow`, `opacity`]
             .map((prop) => `${prop} ${motionDurationSlow} ${motionEaseInOut}`)
             .join(','),
+          '@media (prefers-reduced-motion: reduce)': {
+            transition: 'none',
+          },
         },
       },
     },

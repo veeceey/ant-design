@@ -116,6 +116,9 @@ export const genCheckboxStyle: GenerateStyle<CheckboxToken> = (token) => {
           borderRadius: token.borderRadiusSM,
           borderCollapse: 'separate',
           transition: `all ${token.motionDurationSlow}`,
+          '@media (prefers-reduced-motion: reduce)': {
+            transition: 'none',
+          },
 
           '&:after': {
             boxSizing: 'border-box',
@@ -132,6 +135,9 @@ export const genCheckboxStyle: GenerateStyle<CheckboxToken> = (token) => {
             opacity: 0,
             content: '""',
             transition: `all ${token.motionDurationFast} ${token.motionEaseInBack}, opacity ${token.motionDurationFast}`,
+            '@media (prefers-reduced-motion: reduce)': {
+              transition: 'none',
+            },
           },
         },
 
@@ -178,6 +184,9 @@ export const genCheckboxStyle: GenerateStyle<CheckboxToken> = (token) => {
             opacity: 1,
             transform: 'rotate(45deg) scale(1) translate(-50%,-50%)',
             transition: `all ${token.motionDurationMid} ${token.motionEaseOutBack} ${token.motionDurationFast}`,
+            '@media (prefers-reduced-motion: reduce)': {
+              transition: 'none',
+            },
           },
         },
       },

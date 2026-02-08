@@ -208,7 +208,9 @@ const genSwitchHandleStyle: GenerateStyle<SwitchToken, CSSObject> = (token) => {
         width: handleSize,
         height: handleSize,
         transition: `all ${token.switchDuration} ease-in-out`,
-
+        '@media (prefers-reduced-motion: reduce)': {
+          transition: 'none',
+        },
         '&::before': {
           position: 'absolute',
           top: 0,
@@ -220,6 +222,9 @@ const genSwitchHandleStyle: GenerateStyle<SwitchToken, CSSObject> = (token) => {
           boxShadow: handleShadow,
           transition: `all ${token.switchDuration} ease-in-out`,
           content: '""',
+          '@media (prefers-reduced-motion: reduce)': {
+            transition: 'none',
+          },
         },
       },
 
@@ -270,6 +275,9 @@ const genSwitchInnerStyle: GenerateStyle<SwitchToken, CSSObject> = (token) => {
         transition: [`padding-inline-start`, `padding-inline-end`]
           .map((prop) => `${prop} ${switchDuration} ease-in-out`)
           .join(', '),
+        '@media (prefers-reduced-motion: reduce)': {
+          transition: 'none',
+        },
 
         [`${switchInnerCls}-checked, ${switchInnerCls}-unchecked`]: {
           display: 'block',
@@ -280,6 +288,9 @@ const genSwitchInnerStyle: GenerateStyle<SwitchToken, CSSObject> = (token) => {
           transition: [`margin-inline-start`, `margin-inline-end`]
             .map((prop) => `${prop} ${switchDuration} ease-in-out`)
             .join(', '),
+          '@media (prefers-reduced-motion: reduce)': {
+            transition: 'none',
+          },
         },
 
         [`${switchInnerCls}-checked`]: {
@@ -347,7 +358,9 @@ const genSwitchStyle = (token: SwitchToken): CSSObject => {
       cursor: 'pointer',
       transition: `all ${token.motionDurationMid}`,
       userSelect: 'none',
-
+      '@media (prefers-reduced-motion: reduce)': {
+        transition: 'none',
+      },
       [`&:hover:not(${componentCls}-disabled)`]: {
         background: token.colorTextTertiary,
       },

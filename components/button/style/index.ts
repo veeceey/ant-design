@@ -40,7 +40,9 @@ const genSharedButtonStyle: GenerateStyle<ButtonToken, CSSObject> = (token): CSS
       transition: `all ${token.motionDurationMid} ${token.motionEaseInOut}`,
       userSelect: 'none',
       touchAction: 'manipulation',
-
+      '@media (prefers-reduced-motion: reduce)': {
+        transition: 'none',
+      },
       '&:disabled > *': {
         pointerEvents: 'none',
       },
@@ -80,7 +82,7 @@ const genSharedButtonStyle: GenerateStyle<ButtonToken, CSSObject> = (token): CSS
 
       [`${componentCls}-loading-icon`]: {
         transition: ['width', 'opacity', 'margin']
-          .map((transition) => `${transition} ${motionDurationSlow} ${motionEaseInOut}`)
+          .map((prop) => `${prop} ${motionDurationSlow} ${motionEaseInOut}`)
           .join(','),
       },
 

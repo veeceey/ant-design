@@ -258,6 +258,9 @@ const getRadioBasicStyle: GenerateStyle<RadioToken> = (token) => {
           opacity: 0,
           transition: `all ${motionDurationSlow} ${motionEaseInOutCirc}`,
           content: '""',
+          '@media (prefers-reduced-motion: reduce)': {
+            transition: 'none',
+          },
         },
 
         boxSizing: 'border-box',
@@ -273,6 +276,9 @@ const getRadioBasicStyle: GenerateStyle<RadioToken> = (token) => {
         borderWidth: lineWidth,
         borderRadius: '50%',
         transition: `all ${motionDurationMid}`,
+        '@media (prefers-reduced-motion: reduce)': {
+          transition: 'none',
+        },
       },
 
       [`${componentCls}-input`]: {
@@ -293,6 +299,9 @@ const getRadioBasicStyle: GenerateStyle<RadioToken> = (token) => {
             transform: `scale(${token.calc(token.dotSize).div(radioSize).equal()})`,
             opacity: 1,
             transition: `all ${motionDurationSlow} ${motionEaseInOutCirc}`,
+            '@media (prefers-reduced-motion: reduce)': {
+              transition: 'none',
+            },
           },
         },
       },
@@ -391,6 +400,9 @@ const getRadioButtonStyle: GenerateStyle<RadioToken> = (token) => {
       transition: [`color`, `background-color`, `box-shadow`]
         .map((prop) => `${prop} ${motionDurationMid}`)
         .join(','),
+      '@media (prefers-reduced-motion: reduce)': {
+        transition: 'none',
+      },
 
       a: {
         color: buttonColor,
